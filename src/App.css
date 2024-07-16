@@ -36,3 +36,33 @@
     transform: rotate(360deg);
   }
 }
+
+.app-container {
+  display: flex;
+  height: 100vh;
+}
+
+.navbar {
+  flex: 0 0 200px; /* Adjust the width as needed */
+  background-color: #f4f4f4; /* Optional: add background color to distinguish the navbar */
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.main-image {
+  max-width: 100%;
+  height: auto;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  margin-top: auto; /* Ensures it sticks to the bottom if there's less content */
+}
