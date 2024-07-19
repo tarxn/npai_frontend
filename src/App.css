@@ -42,6 +42,7 @@
   height: 100vh;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Georama:ital,wght@0,100..900;1,100..900&display=swap');
 .navbar {
   flex: 0 0 200px; /* Adjust the width as needed */
   background-color: #f4f4f4; /* Optional: add background color to distinguish the navbar */
@@ -65,4 +66,29 @@
   justify-content: center;
   padding: 20px;
   margin-top: auto; /* Ensures it sticks to the bottom if there's less content */
+}
+
+.georama-light {
+  font-family: "Georama", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400; /* <weight>: Use a value from 100 to 900 */
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
+}
+.georama-bold {
+  font-family: "Georama", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600; /* <weight>: Use a value from 100 to 900 */
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
+}
+.georama-italic {
+  font-family: "Georama", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500; /* <weight>: Use a value from 100 to 900 */
+  font-style: italic;
+  font-variation-settings:
+    "wdth" 100;
 }

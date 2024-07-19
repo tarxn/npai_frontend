@@ -1,63 +1,57 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Group } from '@mantine/core';
+import React, { useState } from 'react';
+import { Box, Group, ScrollArea, Button } from '@mantine/core';
 import {
-  IconBellRinging,
-  IconReceipt2,
+  IconUpload,
+  IconFolder,
+  IconUser,
   IconSwitchHorizontal,
   IconLogout,
   IconDatabaseImport,
 } from '@tabler/icons-react';
-// import { MantineLogo } from '@mantinex/mantine-logo';
-import classes from './Navbar.module.css';
-import logo from './logo.jpeg';
+import logo from './logo.jpeg';  // Ensure path is correct
+import classes from './Navbar.module.css';  // Ensure you have appropriate CSS
 
-const data = [
-  { link: '/about', label: 'About', icon: IconBellRinging },
-  { link: '/images', label: 'Images', icon: IconReceipt2 },
-  { link: '/users', label: 'Users', icon: IconDatabaseImport },
+const menuItems = [
+  { icon: IconUpload, label: 'LIFT' },
+  { icon: IconFolder, label: 'MSWAP' },
+  { icon: IconUser, label: 'BSWAP' },
+  { icon: IconDatabaseImport, label: 'Quin' },
+  { icon: IconFolder, label: 'My Files' },
 ];
 
-export function Navbar(props) {
-  const [active, setActive] = useState(props.id);
+export function Navbar() {
+  const [active, setActive] = useState('LIFT');
 
-  const links = data.map((item) => (
-    <Link
-      className={classes.link}
-      data-active={item.label === active || undefined}
-      to={item.link}
-      key={item.label}
+  const links = menuItems.map((item) => (
+    <Button
+      variant={active === item.label ? 'filled' : 'subtle'}
+      color="dark"
+      fullWidth
       onClick={() => setActive(item.label)}
+      leftIcon={<item.icon size={20} />}
+      style={{ justifyContent: "flex-start", marginBottom: '10px' }}
+      key={item.label}
     >
-      <item.icon className={classes.linkIcon} stroke={1.5} />
-      <span>{item.label}</span>
-    </Link>
+      {item.label}
+    </Button>
   ));
 
   return (
-    <nav className={classes.navbar}>
-      <div className={classes.navbarMain}>
-        <Group className={classes.header}>
-          <img
-            src={logo}
-            alt="Neuropixel AI Logo"
-            style={{ width: '200px', height: 'auto', marginRight: '10px' }}
-          />
+    <Box sx={{ width: 300, backgroundColor: '#1A1A1A', color: 'white', display: 'flex', flexDirection: 'column', height: '100vh' }}>
+      <Box sx={{ padding: 'md', flexGrow: 1 }}>
+        <Group direction="column" align="start">
+          <img src={logo} alt="Logo" style={{ width: '100%', marginBottom: '20px' }} />
+          {links}
         </Group>
-        <div className={classes.links}>{links}</div>
-      </div>
-
-      <div className={classes.footer}>
-        <a href="#" className={classes.link} onClick={(event) => event.preventDefault()}>
-          <IconSwitchHorizontal className={classes.linkIcon} stroke={1.5} />
-          <span>Change account</span>
-        </a>
-
-        <a href="/" className={classes.link}>
-        <IconLogout className={classes.linkIcon} stroke={1.5} />
-        <span>Logout</span>
-        </a>
-      </div>
-    </nav>
+      </Box>
+      <Box sx={{ padding: 'md' }}>
+        <Button variant="subtle" color="dark" fullWidth leftIcon={<IconSwitchHorizontal size={20} />} style={{ marginBottom: '10px' }}>
+          Change account
+        </Button>
+        <Button variant="subtle" color="dark" fullWidth leftIcon={<IconLogout size={20} />}>
+          Logout
+        </Button>
+      </Box>
+    </Box>
   );
 }
